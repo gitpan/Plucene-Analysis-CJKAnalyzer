@@ -1,4 +1,4 @@
-use Test::More tests => 35;
+use Test::More tests => 37;
 #use Test::More 'no_plan';
 
 use utf8;
@@ -86,6 +86,7 @@ my %h = qw(
 Mißhör 163
 überwinden 164
 Gefühle 171
+119 119
 );
 
 foreach (keys %h){

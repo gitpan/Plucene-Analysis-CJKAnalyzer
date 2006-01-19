@@ -1,3 +1,7 @@
 This file documents the revision history for Perl extension Plucene::Analysis::CJKAnalyzer.
+
 0.01  Tue, 17 Jan 2006 22:52:52 +0800
         - initial version
+
+0.02  Fri, 20 Jan 2006 00:07:36 +0800
+	- improved efficiency for alphanumeric indexing

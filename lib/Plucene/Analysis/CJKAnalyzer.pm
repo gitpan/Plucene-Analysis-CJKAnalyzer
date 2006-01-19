@@ -1,6 +1,6 @@
 package Plucene::Analysis::CJKAnalyzer;
 
-$Plucene::Analysis::CJKAnalyzer::VERSION = '0.01';
+$Plucene::Analysis::CJKAnalyzer::VERSION = '0.02';
 
 
 =head1 NAME 

@@ -49,13 +49,16 @@ use encoding 'utf8';
 
 =head1 GLOBAL VARIABLE
 
-Here is one pattern variables that you can modify to customize your
+Here is one pattern variable that you can modify to customize your
 tokenizer for a specific collection.
 
 =head2 $InCJK
 
 Default pattern for CJK characters.
-Default value is qr(
+
+Default value is 
+
+qr(
     \p{InCJKUnifiedIdeographs} |
     \p{InCJKUnifiedIdeographsExtensionA} |
     \p{InCJKUnifiedIdeographsExtensionB} |
@@ -112,13 +115,11 @@ sub scantext {
     my @tok;
 
     # Extract alphanumeric string
-    # I assume texts that are without [a-z0-9] unworth of indexing
-    if($text =~ /[a-z0-9]/io){
-      while($text =~ /([\p{Alnum}]+)/go){
+    # I assume texts that are without [aiueo0-9] unworth of indexing
+    if($text =~ /[aiueo0-9]/io){
+      while($text =~ /([\p{Latin}\p{Number}]+)/go){
           my $tok = lc $1;
-          next if $text =~ /$InCJK/o;
 #          print ">> $tok $-[1] $+[1]\n";
-#          Encode::_utf8_off($tok);
           push @tok, [ $tok, $-[1], $+[1] ];
       }
     }
@@ -137,9 +138,9 @@ sub scantext {
         # Weird. Not working.... ><
         # Skip this for the time being.
 #        for (my $i=0; $i<$#t; $i++){
-#            my $tok = $t[$i]->[0].$t[$i+1]->[0];
-#	    print $tok,"\n";
-#            push @tok, [ $tok, $t[$i]->[1], $t[$i+1]->[2] ];
+#            my $t = $t[$i]->[0].$t[$i+1]->[0];
+#	    print $t,"\n";
+#            push @tok, [ $t, $t[$i]->[1], $t[$i+1]->[2] ];
 #        }
 #	@tok = (@tok, @t);
     }
